@@ -9,26 +9,43 @@ public class Bus {
     String status = "운행 중"; // 상태
     int busNum; // 버스 고유번호
 
-    public Bus(int currentGuest, int currentSpeed) {
+    Bus(int currentGuest, int currentSpeed) {
         num += 1;
         busNum = num;
         this.currentGuest = currentGuest;
         this.currentSpeed = currentSpeed;
     }
 
-    public void busNumber() {
+    void busNumber() {
         System.out.println(busNum+"번 버스입니다.");
     }
 
-    public void gasRemaining(int g) {
+    void gasRemaining(int g) {
         gas += g;
         System.out.println("현재 주유량은 " + gas + " 입니다");
     }
 
-    public void busStatus() {
+    void busStatus() {
         if (gas <= 10) {
             System.out.println("주유가 필요합니다.");
-            System.out.println();
+            status = "차고지행";
+        }
+    }
+
+    void currentGuest(int g) {
+        currentGuest += g;
+        System.out.println("현재 승객은 " + currentGuest + "명 입니다.");
+
+        if (currentGuest > 40) {
+            System.out.println("승객수가 초과되었습니다.");
+            status = "차고지행";
+        }
+    }
+
+    void changeSpeed(int s) {
+        currentSpeed += s;
+        if (gas <= 10) {
+            System.out.println("주유량을 확인해주세요.");
         }
     }
 
